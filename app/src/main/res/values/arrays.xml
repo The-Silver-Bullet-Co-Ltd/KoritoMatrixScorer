@@ -1,0 +1,20 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="refresh_times">
+        <item>Never</item>
+        <item>1 Second</item>
+        <item>2 Second</item>
+        <item>3 Second</item>
+        <item>5 Second</item>
+        <item>10 Second</item>
+    </string-array>
+
+    <string-array name="refresh_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
+        <item>10</item>
+    </string-array>
+</resources>

@@ -1,0 +1,30 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/network_header">
+
+        <EditTextPreference
+            app:key="hostname"
+            app:title="@string/host_address"
+            app:defaultValue="192.168.1.2"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:key="refresh"
+            app:title="@string/refresh_title"
+            app:defaultValue="2"
+            app:entries="@array/refresh_times"
+            app:entryValues="@array/refresh_values"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/user_header">
+
+        <EditTextPreference
+            app:key="observer"
+            app:title="@string/observer_name"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

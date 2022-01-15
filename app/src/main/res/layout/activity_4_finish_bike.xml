@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity4FinishBike">
+
+    <TextView
+        android:id="@+id/name4Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/number4Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="138dp"
+        android:text="Number"
+        app:layout_constraintEnd_toStartOf="@+id/bike4Text"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/bike4Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bike"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/number4Text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/number4Text"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/startedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/started"
+        app:layout_constraintEnd_toEndOf="@+id/finishedText"
+        app:layout_constraintTop_toBottomOf="@+id/number4Text" />
+
+    <TextView
+        android:id="@+id/finishedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/finished"
+        app:layout_constraintBaseline_toBaselineOf="@+id/finishTimeText"
+        app:layout_constraintEnd_toEndOf="@id/dabText"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <TextView
+        android:id="@+id/startTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/hh_mm_ss"
+        android:textColorHint="#757575"
+        android:importantForAutofill="no"
+        android:inputType="time"
+        app:layout_constraintBaseline_toBaselineOf="@+id/startedText"
+        app:layout_constraintEnd_toEndOf="@+id/finishTimeText"
+        tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+    <TextView
+        android:id="@+id/dabTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/hh_mm_ss"
+        android:textColorHint="#757575"
+        android:importantForAutofill="no"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/totalTimeText"
+        app:layout_constraintEnd_toEndOf="@+id/totalTimeText"
+        app:layout_constraintTop_toBottomOf="@+id/elapsedTimeText"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/elapsedTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/hh_mm_ss"
+        android:textColorHint="#757575"
+        android:importantForAutofill="no"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/dabTimeText"
+        app:layout_constraintEnd_toEndOf="@+id/dabTimeText"
+        app:layout_constraintTop_toBottomOf="@+id/finishTimeText"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/finishTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/hh_mm_ss"
+        android:textColorHint="#757575"
+        android:importantForAutofill="no"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@+id/elapsedTimeText"
+        app:layout_constraintEnd_toEndOf="@+id/elapsedTimeText"
+        app:layout_constraintTop_toBottomOf="@+id/startTimeText"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/totalTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/hh_mm_ss"
+        android:textColorHint="#757575"
+        android:importantForAutofill="no"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="@id/elapsedTimeText"
+        app:layout_constraintTop_toBottomOf="@+id/dabTimeText"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/plusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/plusSign"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dabsCountedText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/dabsCountedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="10"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dabText"
+        app:layout_constraintStart_toEndOf="@id/plusText"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/dabText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/dabText"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dabTimeText"
+        app:layout_constraintEnd_toStartOf="@+id/dabTimeText"
+        app:layout_constraintHorizontal_bias="10"
+        app:layout_constraintStart_toEndOf="@+id/dabsCountedText" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:onClick="restartScoring"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/finaliseButton" />
+
+    <Button
+        android:id="@+id/finaliseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:onClick="submitResults"
+        android:text="@string/finalise"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/backButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
