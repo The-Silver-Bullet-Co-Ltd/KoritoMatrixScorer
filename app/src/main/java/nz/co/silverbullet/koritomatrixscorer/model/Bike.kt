@@ -1,4 +1,4 @@
-package nz.co.silverbullet.koritomatrixscorer.data
+package nz.co.silverbullet.koritomatrixscorer.model
 
 data class Bike(
     val id : Long,

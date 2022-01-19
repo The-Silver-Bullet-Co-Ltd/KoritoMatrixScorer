@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 
+
 class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +43,13 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
                 5 -> Toast.makeText(this, "5 selected", Toast.LENGTH_SHORT).show()
                 10 -> Toast.makeText(this, "10 selected", Toast.LENGTH_SHORT).show()
             }
+        }
+        if (key == "hostname") {
+            /*val prefs = sharedPreferences?.getString(key,"192.168.1.2")
+            val field: java.lang.reflect.Field = Retrofit::class.java.getDeclaredField("baseUrl")
+            field.setAccessible(true)
+            val newHttpUrl = HttpUrl.apply {  } .parse(prefs)
+            field.set(RetrofitInstance, newHttpUrl)*/
         }
     }
 

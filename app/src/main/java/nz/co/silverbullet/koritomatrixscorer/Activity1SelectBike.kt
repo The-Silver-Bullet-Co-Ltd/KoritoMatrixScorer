@@ -2,16 +2,21 @@ package nz.co.silverbullet.koritomatrixscorer
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
-import androidx.recyclerview.widget.RecyclerView
-import nz.co.silverbullet.koritomatrixscorer.bikeList.BikeAvailableAdapter
-import nz.co.silverbullet.koritomatrixscorer.data.Bike
-import nz.co.silverbullet.koritomatrixscorer.data.Datasource
+import androidx.recyclerview.widget.LinearLayoutManager
+import nz.co.silverbullet.koritomatrixscorer.adapter.MatrixAdapter
+import nz.co.silverbullet.koritomatrixscorer.api.RetrofitInstance
 import nz.co.silverbullet.koritomatrixscorer.databinding.Activity1SelectBikeBinding
+import nz.co.silverbullet.koritomatrixscorer.model.Bike
+import retrofit2.HttpException
+import java.io.IOException
 
 /* https://restfulapi.net/rest-api-design-tutorial-with-example/ */
 
@@ -138,23 +143,70 @@ import nz.co.silverbullet.koritomatrixscorer.databinding.Activity1SelectBikeBind
 
  */
 
-class Activity1SelectBike : AppCompatActivity(), BikeAvailableAdapter.OnItemClickListener {
+const val TAG = "SelectBikeActivity"
+
+class Activity1SelectBike : AppCompatActivity(), MatrixAdapter.OnItemClickListener {
 
     private lateinit var bikeList : List<Bike>
+
+    /*
+    In an MVVM architecture in a real app you'd make the Retrofit call in the repository
+    and then call that from the view model
+     */
     private lateinit var binding : Activity1SelectBikeBinding
+
+    private lateinit var matrixAdapter: MatrixAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = Activity1SelectBikeBinding.inflate(this.layoutInflater)
         setContentView(binding.root)
+        setupRecyclerView()
+
+        requestBikeListFromServer()
 
         mySettings()
 
-        bikeList = Datasource(this.resources).getBikeList()
+        //bikeList = Datasource(this.resources).getBikeList()
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        recyclerView.adapter = BikeAvailableAdapter(bikeList,this)
+        //val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        //recyclerView.adapter = BikeAvailableAdapter(bikeList,this)
+    }
+
+    private fun requestBikeListFromServer() {
+        lifecycleScope.launchWhenCreated {
+            binding.progressBar.isVisible = true
+            val response = try {
+                RetrofitInstance.api.getBikes()
+            } catch (e: IOException) {
+                /*
+                    e.g. don't have internet connection, output stream closed, etc
+                */
+                Log.e(TAG, "IOException, you might not have internet connection "+e.toString())
+                binding.progressBar.isVisible = false
+                return@launchWhenCreated
+            } catch (e : HttpException) {
+                /*
+                    e.g. XXX response code doesn't begin with a 2
+                */
+                Log.e(TAG, "HTTPException, unexpected response")
+                binding.progressBar.isVisible = false
+                return@launchWhenCreated
+            }
+            if (response.isSuccessful && response.body() != null) {
+                matrixAdapter.bikes = response.body()!!
+            } else {
+                Log.e( TAG, "Response not successful " +response.toString())
+            }
+            binding.progressBar.isVisible = false
+        }
+    }
+
+    private fun setupRecyclerView() = binding.recyclerView.apply {
+        matrixAdapter = MatrixAdapter(this@Activity1SelectBike)
+        adapter = matrixAdapter
+        layoutManager = LinearLayoutManager(this@Activity1SelectBike)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -164,7 +216,11 @@ class Activity1SelectBike : AppCompatActivity(), BikeAvailableAdapter.OnItemClic
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_refresh -> Toast.makeText(this,"REFRESH Selected",Toast.LENGTH_SHORT).show()
+            R.id.action_refresh -> {
+                Toast.makeText(this,"REFRESH Selected",Toast.LENGTH_SHORT).show()
+                requestBikeListFromServer()
+                return true
+            }
             R.id.action_settings ->
             {
                 startActivity(Intent(this, SettingsActivity::class.java))
