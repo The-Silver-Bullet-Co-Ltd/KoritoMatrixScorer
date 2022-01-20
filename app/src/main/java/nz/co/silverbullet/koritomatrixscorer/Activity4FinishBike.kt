@@ -2,19 +2,41 @@ package nz.co.silverbullet.koritomatrixscorer
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
+import nz.co.silverbullet.koritomatrixscorer.model.Bike
+import nz.co.silverbullet.koritomatrixscorer.repository.Repository
 
 class Activity4FinishBike : AppCompatActivity() {
 
     private lateinit var bundle : Bundle
+    private lateinit var viewModel: Activity4ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_4_finish_bike)
+
+        val repository = Repository()
+        val viewModelFactory = Activity4ViewModelFactory(repository)
+        viewModel = ViewModelProvider(this,viewModelFactory)[Activity4ViewModel::class.java]
+
+        viewModel.myResponse.observe(this, Observer { response ->
+            if (response.isSuccessful) {
+                Log.d("Activity 4 Response OK ", response.code().toString())
+                val intent = Intent(this, Activity1SelectBike::class.java)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } else {
+                Log.d("Activity 4 Response ", response.code().toString())
+            }
+        })
 
         bundle = intent.extras!!
 
@@ -92,9 +114,22 @@ class Activity4FinishBike : AppCompatActivity() {
     }
 
     fun submitResults(view: View) {
-        val intent = Intent(this, Activity1SelectBike::class.java)
-        intent.putExtras(bundle)
-        startActivity(intent)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val observerName = prefs.getString("observer","")
+
+        var bike = Bike(
+            bundle.getLong("id"),
+            bundle.getString("number")!!,
+            bundle.getString("make")!!,
+            bundle.getString("model")!!,
+            bundle.getString("rider")!!,
+            bundle.getLong("start")!!,
+            bundle.getLong("finish")!!,
+            bundle.getInt("dabs")!!,
+            bundle.getLong("matrixTimePenalties")!!
+        )
+        /* make api call -> viewModel -> repository -> RetrofitInstance -> MatrixApi */
+        viewModel.updateBike(bundle.getString("number")!!,observerName!!, bike)
     }
 
     fun restartScoring(view: View) {
