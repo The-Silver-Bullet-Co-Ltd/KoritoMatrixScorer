@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSizeBikeNumber">90sp</dimen>
+    <dimen name="textSizeRiderName">60sp</dimen>
+    <dimen name="textSizeBike">35sp</dimen>
+
+    <dimen name="textSizeTime">35sp</dimen>
+    <dimen name="textSizeFinaliseTime">25sp</dimen>
+
+    <dimen name="marginTopToNumber">10dp</dimen>
+    <dimen name="marginNumberToName">10dp</dimen>
+    <dimen name="marginNameToBike">20dp</dimen>
+</resources>

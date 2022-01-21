@@ -8,48 +8,54 @@
 
     <Button
         android:id="@+id/buttonStart"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
         android:onClick="startBike"
         android:text="@string/start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/name2Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/bike2Text"
+        />
 
     <TextView
         android:id="@+id/number2Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="138dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/bike2Text"
+        android:textSize="@dimen/textSizeBikeNumber"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/marginTopToNumber"
+        />
+
+    <TextView
+        android:id="@+id/name2Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="@dimen/textSizeRiderName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@id/number2Text"
+        android:layout_margin="@dimen/marginNumberToName"
+        />
 
     <TextView
         android:id="@+id/bike2Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/number2Text"
+        android:textSize="@dimen/textSizeBike"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/number2Text" />
+        app:layout_constraintTop_toBottomOf="@+id/name2Text"
+        android:layout_margin="@dimen/marginNameToBike"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

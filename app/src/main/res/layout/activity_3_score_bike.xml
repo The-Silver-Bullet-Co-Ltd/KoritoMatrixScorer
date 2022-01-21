@@ -6,45 +6,50 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/name3Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/number3Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="138dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/bike3Text"
+        android:text="Number"
+        android:textSize="@dimen/textSizeBikeNumber"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/marginTopToNumber"/>
+
+    <TextView
+        android:id="@+id/name3Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="@dimen/textSizeRiderName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/number3Text"
+        android:layout_margin="@dimen/marginNumberToName"
+        />
 
     <TextView
         android:id="@+id/bike3Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/number3Text"
+        android:text="Bike"
+        android:textSize="@dimen/textSizeBike"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/number3Text" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name3Text"
+        android:layout_margin="@dimen/marginNameToBike"
+        />
 
     <Chronometer
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="20dp"
         android:text="00:00:00"
+        android:textSize="@dimen/textSizeTime"
         app:layout_constraintBottom_toTopOf="@+id/dabButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -55,6 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textSize="@dimen/textSizeTime"
         app:layout_constraintBaseline_toBaselineOf="@+id/dabButton"
         app:layout_constraintEnd_toStartOf="@id/dabButton"
         android:layout_marginEnd="10dp"/>
@@ -76,6 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+10"
+        android:textSize="@dimen/textSizeTime"
         app:layout_constraintBaseline_toBaselineOf="@+id/dabButton"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/dabButton"
