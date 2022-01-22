@@ -48,7 +48,7 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
                 response.body()?.let { matrixAdapter.setData(it) }
                 Log.d("Response (first bike) ","nothing to see")
             } else {
-                Log.d("Response ", response.errorBody().toString())
+                Log.e("Response ", response.code().toString())
             }
         })
 

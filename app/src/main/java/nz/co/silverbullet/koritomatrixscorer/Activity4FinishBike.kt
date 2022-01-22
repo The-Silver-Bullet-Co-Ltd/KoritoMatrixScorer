@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -84,7 +83,7 @@ class Activity4FinishBike : AppCompatActivity() {
 
         totalMilliseconds -= bundle.getLong("start")
 
-        Toast.makeText(this, ""+ totalMilliseconds, Toast.LENGTH_SHORT).show()
+        // Toast.makeText(this, ""+ totalMilliseconds, Toast.LENGTH_SHORT).show()
         totalSeconds = totalMilliseconds / 1000
         milliSeconds = totalMilliseconds - (totalSeconds * 1000)
 

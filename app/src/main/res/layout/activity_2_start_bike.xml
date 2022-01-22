@@ -12,6 +12,7 @@
         android:layout_height="75dp"
         android:onClick="startBike"
         android:text="@string/start"
+        android:background="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

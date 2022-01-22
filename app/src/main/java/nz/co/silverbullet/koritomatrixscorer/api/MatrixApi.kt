@@ -8,11 +8,11 @@ import retrofit2.http.*
 interface MatrixApi {
 
    // get bike list
-   @GET("/matrix/bikes.php")
+   @GET("/matrix/bikes")
    suspend fun getBikes() : Response<List<Bike>>
 
    // reserve a bike
-   @POST("/matrix/reservations.php/{bikeNumber}/{observerName}")
+   @POST("/matrix/reservations/{bikeNumber}/{observerName}")
    suspend fun createReservation(
       @Path("bikeNumber") bikeNumber: String,
       @Path("observerName") observerName : String
@@ -30,7 +30,7 @@ interface MatrixApi {
    suspend fun getReservations() : Response<List<Bike>>
 
    // save timings for matrix attempt by bike
-   @PUT("/matrix/bikes.php/{bikeNumber}/{observerName}")
+   @PUT("/matrix/bikes/{bikeNumber}/{observerName}")
    suspend fun updateBike(
       @Path( "bikeNumber") bikeNumber : String,
       @Path("observerName") observerName : String,
