@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import nz.co.silverbullet.koritomatrixscorer.repository.Repository
 
+const val TAG2 = "StartBikeActivity"
+
 class Activity2StartBike : AppCompatActivity() {
 
     private lateinit var bundle : Bundle
@@ -43,7 +45,7 @@ class Activity2StartBike : AppCompatActivity() {
                 numberText.text = bike?.number
                 bikeText.text = bike?.bike()
             } else {
-                Log.d("Activity 2 Response ", response.code().toString())
+                Log.d(TAG2, response.code().toString())
             }
         })
     }

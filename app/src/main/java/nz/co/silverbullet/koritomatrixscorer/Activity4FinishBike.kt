@@ -13,6 +13,8 @@ import androidx.preference.PreferenceManager
 import nz.co.silverbullet.koritomatrixscorer.model.Bike
 import nz.co.silverbullet.koritomatrixscorer.repository.Repository
 
+const val TAG4 = "ActivityFinishBike"
+
 class Activity4FinishBike : AppCompatActivity() {
 
     private lateinit var bundle : Bundle

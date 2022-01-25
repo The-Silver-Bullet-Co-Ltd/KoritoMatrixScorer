@@ -2,7 +2,6 @@ package nz.co.silverbullet.koritomatrixscorer
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import nz.co.silverbullet.koritomatrixscorer.adapter.MatrixRecyclerAdapter
 import nz.co.silverbullet.koritomatrixscorer.databinding.Activity1SelectBikeBinding
 import nz.co.silverbullet.koritomatrixscorer.repository.Repository
+import nz.co.silverbullet.koritomatrixscorer.utils.Constants.Companion.BASE_URL
 
 const val TAG = "SelectBikeActivity"
 
@@ -45,10 +45,10 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
 
         viewModel.myResponse.observe(this, Observer { response ->
             if (response.isSuccessful) {
+                // update UI
                 response.body()?.let { matrixAdapter.setData(it) }
-                Log.d("Response (first bike) ","nothing to see")
             } else {
-                Log.e("Response ", response.code().toString())
+                // already logged in Activity1ViewModel
             }
         })
 
@@ -62,7 +62,7 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
     }
 
     private fun requestBikeListFromServer() {
-        viewModel.getBikes()
+            viewModel.getBikes()
     }
 
     override fun onItemClick(position: Int) {
@@ -109,7 +109,8 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
 
     private fun mySettings() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        val host = prefs.getString("hostname","192.168.1.2")
+//        val host = prefs.getString("hostname","192.168.1.2")
+        val host = BASE_URL
         val refresh = prefs.getString("refresh","2")
         val observer = prefs.getString("observer","")
 
