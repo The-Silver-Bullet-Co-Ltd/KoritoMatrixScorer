@@ -32,6 +32,14 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+//        try {
+//            Class.forName("dalvik.system.CloseGuard")
+//                .getMethod("setEnabled", Boolean::class.javaPrimitiveType)
+//                .invoke(null, true)
+//        } catch (e: ReflectiveOperationException) {
+//            throw RuntimeException(e)
+//        }
+
         binding = Activity1SelectBikeBinding.inflate(this.layoutInflater)
         setContentView(binding.root)
 
@@ -46,7 +54,8 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
         viewModel.myResponse.observe(this, Observer { response ->
             if (response.isSuccessful) {
                 // update UI
-                response.body()?.let { matrixAdapter.setData(it) }
+                response.body()?.let { matrixAdapter.setData(it.data) }
+                Toast.makeText(this,response.body()?.message,Toast.LENGTH_SHORT).show()
             } else {
                 // already logged in Activity1ViewModel
             }
@@ -66,7 +75,7 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
     }
 
     override fun onItemClick(position: Int) {
-        val bike = viewModel.myResponse.value?.body()?.get(position)
+        val bike = viewModel.myResponse.value?.body()?.data?.get(position)
         /* implement required function of OnItemClickListener interface */
        val bundle = Bundle()
        bundle.putLong("id",bike!!.id)
@@ -75,6 +84,7 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
        bundle.putString("model",bike.model)
        bundle.putString("bike",bike.bike())
        bundle.putString("rider",bike.rider)
+       bundle.putInt("lap",bike.lap)
        bundle.putLong("start",bike.start)
        bundle.putLong("finish",bike.finish)
        bundle.putInt("dabs",bike.dabs)
@@ -115,7 +125,11 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
         val observer = prefs.getString("observer","")
 
         binding.apply {
-            observerTxt.text = observer + " on " + host + " (" + refresh + " secs)"
+            observerTxt.text = observer + " on " + host /* + " (" + refresh + " secs)" */
         }
     }
+
+    override fun onBackPressed() {
+    }
+
 }

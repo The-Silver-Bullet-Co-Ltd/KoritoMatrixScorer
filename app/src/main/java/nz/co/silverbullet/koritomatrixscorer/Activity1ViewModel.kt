@@ -7,13 +7,13 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import nz.co.silverbullet.koritomatrixscorer.model.Bike
+import nz.co.silverbullet.koritomatrixscorer.model.BikeListWrapper
 import nz.co.silverbullet.koritomatrixscorer.repository.Repository
 import retrofit2.Response
 
 class Activity1ViewModel(private val repository: Repository) : ViewModel() {
 
-    val myResponse : MutableLiveData<Response<List<Bike>>> = MutableLiveData()
+    val myResponse : MutableLiveData<Response<BikeListWrapper>> = MutableLiveData()
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler{ _, exception ->
         run {

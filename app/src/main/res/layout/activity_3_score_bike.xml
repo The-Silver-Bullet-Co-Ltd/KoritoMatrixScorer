@@ -47,7 +47,7 @@
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="120dp"
         android:text="00:00:00"
         android:textSize="@dimen/textSizeTime"
         app:layout_constraintBottom_toTopOf="@+id/dabButton"
@@ -60,20 +60,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textSize="@dimen/textSizeTime"
+        android:textSize="@dimen/textSizeDab"
         app:layout_constraintBaseline_toBaselineOf="@+id/dabButton"
         app:layout_constraintEnd_toStartOf="@id/dabButton"
-        android:layout_marginEnd="10dp"/>
+        android:layout_marginEnd="20dp"/>
 
     <Button
         android:id="@+id/dabButton"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginBottom="60dp"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="300dp"
         android:onClick="scoreDab"
         android:text="DAB"
+        android:textSize="50sp"
         android:background="@color/teal_200"
         app:layout_constraintBottom_toTopOf="@+id/finishButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/failButton"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="60dp"
+        android:textAllCaps="false"
+        android:onClick="scoreFail"
+        android:text="FAIL"
+        android:textSize="50sp"
+        android:background="@color/teal_200"
+        app:layout_constraintTop_toBottomOf="@id/dabButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
@@ -83,20 +99,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+10"
-        android:textSize="@dimen/textSizeTime"
+        android:textSize="@dimen/textSizeDab"
         app:layout_constraintBaseline_toBaselineOf="@+id/dabButton"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/dabButton"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="20dp"/>
 
     <Button
         android:id="@+id/finishButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_height="@dimen/buttonHeightFinalise"
         android:layout_marginBottom="25dp"
+        android:background="@color/teal_700"
         android:onClick="finishMatrix"
         android:text="FINISH"
-        android:background="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

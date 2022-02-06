@@ -4,8 +4,13 @@
     <dimen name="textSizeRiderName">60sp</dimen>
     <dimen name="textSizeBike">35sp</dimen>
 
-    <dimen name="textSizeTime">35sp</dimen>
+    <dimen name="textSizeTime">135sp</dimen>
+    <dimen name="textSizeDab">50sp</dimen>
     <dimen name="textSizeFinaliseTime">25sp</dimen>
+    <dimen name="textSizeResults">40sp</dimen>
+
+    <dimen name="buttonHeightFinalise">150sp</dimen>
+    <dimen name="buttonWidthStart">300sp</dimen>
 
     <dimen name="marginTopToNumber">10dp</dimen>
     <dimen name="marginNumberToName">10dp</dimen>

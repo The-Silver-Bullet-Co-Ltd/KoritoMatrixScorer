@@ -4,15 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.view.View
+import android.widget.Button
 import android.widget.Chronometer
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class Activity3ScoreBike : AppCompatActivity() {
 
-    private lateinit var bundle : Bundle
-    private lateinit var dabCountText : TextView
-    private lateinit var dabTimeText : TextView
+    private lateinit var bundle: Bundle
+    private lateinit var dabCountText: TextView
+    private lateinit var dabTimeText: TextView
+    private lateinit var dabButton: Button
+    private lateinit var failButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,16 +23,18 @@ class Activity3ScoreBike : AppCompatActivity() {
 
         bundle = intent.extras!!
 
-        val nameText =  findViewById<TextView>(R.id.name3Text)
-        val numberText =  findViewById<TextView>(R.id.number3Text)
-        val bikeText =  findViewById<TextView>(R.id.bike3Text)
+        val nameText = findViewById<TextView>(R.id.name3Text)
+        val numberText = findViewById<TextView>(R.id.number3Text)
+        val bikeText = findViewById<TextView>(R.id.bike3Text)
         dabCountText = findViewById<TextView>(R.id.dabCountText)
         dabTimeText = findViewById<TextView>(R.id.dabTimeText)
+        dabButton = findViewById<Button>(R.id.dabButton)
+        failButton = findViewById<Button>(R.id.failButton)
 
         nameText.text = bundle.getString("rider")
         numberText.text = bundle.getString("number")
         bikeText.text = bundle.getString("bike")
-        displayDabs( bundle.getInt("dabs"))
+        displayDabs(bundle.getInt("dabs"))
 
 
         val simpleChronometer =
@@ -38,9 +43,9 @@ class Activity3ScoreBike : AppCompatActivity() {
 
     }
 
-    fun displayDabs(dabs : Int) {
+    private fun displayDabs(dabs: Int) {
         dabCountText.text = dabs.toString()
-        dabTimeText.text = DateUtils.formatElapsedTime((dabs*10).toLong())
+        dabTimeText.text = DateUtils.formatElapsedTime((dabs * 10).toLong())
     }
 
     fun scoreDab(view: View) {
@@ -52,6 +57,22 @@ class Activity3ScoreBike : AppCompatActivity() {
         displayDabs(dabs)
     }
 
+    fun scoreFail(view: View) {
+        var dabs = bundle.getInt("dabs")
+        if (dabs == 5) {
+            dabs = 0
+            dabButton.isEnabled = true
+            failButton.setText("FAIL")
+        } else {
+            dabs = 5
+            dabButton.isEnabled = false
+            failButton.setText("reset")
+        }
+
+        bundle.putInt("dabs", dabs)
+        displayDabs(dabs)
+    }
+
     fun finishMatrix(view: View) {
         val tsLong = System.currentTimeMillis()
         bundle.putLong("finish", tsLong)
@@ -59,5 +80,8 @@ class Activity3ScoreBike : AppCompatActivity() {
         val intent = Intent(this, Activity4FinishBike::class.java)
         intent.putExtras(bundle)
         startActivity(intent)
+    }
+
+    override fun onBackPressed() {
     }
 }

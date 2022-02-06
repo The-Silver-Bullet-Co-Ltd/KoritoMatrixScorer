@@ -1,6 +1,8 @@
 package nz.co.silverbullet.koritomatrixscorer.api
 
 import nz.co.silverbullet.koritomatrixscorer.model.Bike
+import nz.co.silverbullet.koritomatrixscorer.model.BikeListWrapper
+import nz.co.silverbullet.koritomatrixscorer.model.BikeWrapper
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -9,33 +11,33 @@ interface MatrixApi {
 
    // get bike list
    @GET("/matrix/bikes")
-   suspend fun getBikes() : Response<List<Bike>>
+   suspend fun getBikes() : Response<BikeListWrapper>
 
    // reserve a bike
-   @POST("/matrix/reservations/{bikeNumber}/{observerName}")
+   @POST("/matrix/reservations/{lapId}/{bikeNumber}/{observerName}")
    suspend fun createReservation(
+      @Path("lapId") lapId: Long,
       @Path("bikeNumber") bikeNumber: String,
       @Path("observerName") observerName : String
-   ) : Response<Bike>
+   ) : Response<BikeWrapper>
 
    // release a bike
-   @DELETE( "/matrix/reservations/{bikeNumber}/{observerName}")
+   @DELETE( "/matrix/reservations/{lapId}/{bikeNumber}/{observerName}")
    suspend fun deleteReservation(
+      @Path("lapId") lapId: Long,
       @Path("bikeNumber") bikeNumber: String,
       @Path("observerName") observerName : String
-   ) : okhttp3.Response
+   ) : Response<BikeWrapper>
 
    // get list of outstanding reservations?
    @GET("/matrix/reservations/")
-   suspend fun getReservations() : Response<List<Bike>>
+   suspend fun getReservations() : Response<BikeListWrapper>
 
    // save timings for matrix attempt by bike
-   @PUT("/matrix/bikes/{bikeNumber}/{observerName}")
+   @POST("/matrix/laps")
    suspend fun updateBike(
-      @Path( "bikeNumber") bikeNumber : String,
-      @Path("observerName") observerName : String,
       @Body bike: Bike
-   ) : Response<Bike>
+   ) : Response<BikeWrapper>
 }
 
 /* https://restfulapi.net/rest-api-design-tutorial-with-example/ */

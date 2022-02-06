@@ -50,10 +50,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/started"
-        android:textSize="@dimen/textSizeFinaliseTime"
+        android:textSize="@dimen/textSizeResults"
         app:layout_constraintEnd_toEndOf="@+id/finishedText"
         app:layout_constraintTop_toBottomOf="@+id/bike4Text"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="150dp"
         />
 
     <TextView
@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/finished"
-        android:textSize="@dimen/textSizeFinaliseTime"
+        android:textSize="@dimen/textSizeResults"
         app:layout_constraintBaseline_toBaselineOf="@+id/finishTimeText"
         app:layout_constraintEnd_toEndOf="@id/dabText"
         />
@@ -71,12 +71,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hh_mm_ss"
-        android:textSize="@dimen/textSizeFinaliseTime"
+        android:textSize="@dimen/textSizeResults"
         android:textColorHint="#757575"
         android:importantForAutofill="no"
         android:inputType="time"
         app:layout_constraintBaseline_toBaselineOf="@+id/startedText"
         app:layout_constraintEnd_toEndOf="@+id/finishTimeText"
+        app:layout_constraintStart_toEndOf="@id/startedText"
+        android:layout_marginStart="25dp"
         tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
     <TextView
@@ -87,7 +89,7 @@
         android:textColorHint="#757575"
         android:importantForAutofill="no"
         android:inputType="time"
-        android:textSize="@dimen/textSizeFinaliseTime"
+        android:textSize="@dimen/textSizeResults"
         app:layout_constraintBottom_toTopOf="@+id/totalTimeText"
         app:layout_constraintEnd_toEndOf="@+id/totalTimeText"
         app:layout_constraintTop_toBottomOf="@+id/elapsedTimeText"
@@ -101,7 +103,7 @@
         android:textColorHint="#757575"
         android:importantForAutofill="no"
         android:inputType="time"
-        android:textSize="@dimen/textSizeFinaliseTime"
+        android:textSize="@dimen/textSizeResults"
         app:layout_constraintBottom_toTopOf="@+id/dabTimeText"
         app:layout_constraintEnd_toEndOf="@+id/dabTimeText"
         app:layout_constraintTop_toBottomOf="@+id/finishTimeText"
@@ -112,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hh_mm_ss"
-        android:textSize="@dimen/textSizeFinaliseTime"
+        android:textSize="@dimen/textSizeResults"
         android:textColorHint="#757575"
         android:importantForAutofill="no"
         android:inputType="time"
@@ -129,7 +131,7 @@
         android:textColorHint="#757575"
         android:importantForAutofill="no"
         android:inputType="time"
-        android:textSize="@dimen/textSizeFinaliseTime"
+        android:textSize="@dimen/textSizeResults"
         app:layout_constraintEnd_toEndOf="@id/elapsedTimeText"
         app:layout_constraintTop_toBottomOf="@+id/dabTimeText"
         tools:ignore="TouchTargetSizeCheck" />
@@ -140,7 +142,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="@string/plusSign"
-        android:textSize="@dimen/textSizeFinaliseTime"
+        android:textSize="@dimen/textSizeResults"
         app:layout_constraintBaseline_toBaselineOf="@+id/dabsCountedText"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -150,7 +152,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="10"
-        android:textSize="@dimen/textSizeFinaliseTime"
+        android:textSize="@dimen/textSizeResults"
         app:layout_constraintBaseline_toBaselineOf="@+id/dabText"
         app:layout_constraintStart_toEndOf="@id/plusText"
         tools:ignore="HardcodedText" />
@@ -162,37 +164,22 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="15dp"
         android:text="@string/dabText"
-        android:textSize="@dimen/textSizeFinaliseTime"
+        android:textSize="@dimen/textSizeResults"
         app:layout_constraintBaseline_toBaselineOf="@+id/dabTimeText"
-        app:layout_constraintEnd_toStartOf="@+id/dabTimeText"
         app:layout_constraintStart_toEndOf="@+id/dabsCountedText" />
 
     <Button
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:onClick="restartScoring"
-        android:text="@string/back"
-        android:background="@color/teal_200"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/finaliseButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        />
-
-    <Button
         android:id="@+id/finaliseButton"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_height="@dimen/buttonHeightFinalise"
+        android:layout_marginBottom="25dp"
         android:onClick="submitResults"
         android:text="@string/finalise"
         android:background="@color/teal_700"
-        android:drawableLeft="@drawable/ic_baseline_cell_wifi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/backButton"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

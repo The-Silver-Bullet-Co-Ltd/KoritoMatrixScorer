@@ -32,20 +32,28 @@ class Activity2StartBike : AppCompatActivity() {
         viewModel = ViewModelProvider(this,viewModelFactory)[Activity2ViewModel::class.java]
 
         /* make api call -> viewModel -> repository -> RetrofitInstance -> MatrixApi */
-        viewModel.createReservation(bundle.getString("number")!!,observerName!!)
+        viewModel.createReservation(bundle.getLong("id"), bundle.getString("number")!!, observerName!!)
 
         viewModel.myResponse.observe(this, Observer { response ->
+            Log.d(TAG2,"here abouts")
             if (response.isSuccessful) {
-                val bike = viewModel.myResponse.value?.body()
-                val nameText =  findViewById<TextView>(R.id.name2Text)
-                val numberText =  findViewById<TextView>(R.id.number2Text)
-                val bikeText =  findViewById<TextView>(R.id.bike2Text)
+                if (viewModel.myResponse.value?.body()?.code!! > 0L) {
+                    // never get here!
+                    Log.d(TAG2,"about to go back")
+                } else {
+                    Log.d(TAG2,"and there")
+                    val bike = viewModel.myResponse.value?.body()?.data
+                    val nameText = findViewById<TextView>(R.id.name2Text)
+                    val numberText = findViewById<TextView>(R.id.number2Text)
+                    val bikeText = findViewById<TextView>(R.id.bike2Text)
 
-                nameText.text = bike?.rider
-                numberText.text = bike?.number
-                bikeText.text = bike?.bike()
+                    nameText.text = bike?.rider
+                    numberText.text = bike?.number
+                    bikeText.text = bike?.bike()
+                }
             } else {
                 Log.d(TAG2, response.code().toString())
+                onBackPressed()
             }
         })
     }
@@ -57,5 +65,11 @@ class Activity2StartBike : AppCompatActivity() {
         val intent = Intent(this, Activity3ScoreBike::class.java)
         intent.putExtras(bundle)
         startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+//        val intent = Intent(this, Activity1SelectBike::class.java)
+//        intent.putExtras(bundle)
+//        startActivity(intent)
     }
 }

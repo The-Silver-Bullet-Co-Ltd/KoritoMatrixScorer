@@ -8,9 +8,10 @@
 
     <Button
         android:id="@+id/buttonStart"
-        android:layout_width="125dp"
-        android:layout_height="75dp"
+        android:layout_width="@dimen/buttonWidthStart"
+        android:layout_height="@dimen/buttonHeightFinalise"
         android:onClick="startBike"
+        android:textSize="50sp"
         android:text="@string/start"
         android:background="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"

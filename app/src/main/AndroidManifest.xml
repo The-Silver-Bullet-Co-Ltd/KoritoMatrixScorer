@@ -19,26 +19,26 @@
             android:parentActivityName=".Activity1SelectBike"/>
         <activity
             android:name=".Activity4FinishBike"
-            android:exported="true"
-            android:parentActivityName=".Activity3ScoreBike">
+            android:exported="true">
+            <!--android:parentActivityName=".Activity3ScoreBike"-->
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
-            <meta-data
+            <!--meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity3ScoreBike" />
+                android:value=".Activity3ScoreBike" /-->
         </activity>
         <activity
             android:name=".Activity3ScoreBike"
             android:exported="true" />
         <activity
             android:name=".Activity2StartBike"
-            android:exported="true"
-            android:parentActivityName=".Activity1SelectBike">
+            android:exported="true">
+            <!--android:parentActivityName=".Activity1SelectBike"-->
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
-            <meta-data
+            <!--meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity1SelectBike" />
+                android:value=".Activity1SelectBike" /-->
         </activity>
         <activity
             android:name=".Activity1SelectBike"

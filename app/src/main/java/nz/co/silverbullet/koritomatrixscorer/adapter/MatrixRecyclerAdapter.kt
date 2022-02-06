@@ -1,5 +1,6 @@
 package nz.co.silverbullet.koritomatrixscorer.adapter
 
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -58,13 +59,18 @@ class MatrixRecyclerAdapter(
     override fun getItemCount() = bikeList.size
 
     override fun onBindViewHolder(holder: MatrixViewHolder, position: Int) {
+        val bike = bikeList[position]
         holder.binding.apply {
-            val bike = bikeList[position]
             number4Text.text = bike.number
             name4Text.text = bike.rider
             bikeText.text = bike.make + " " + bike.model
+            lapNumber.text = "(" + bike.lap + ")"
         }
-
+        if (bike.reserved) {
+            holder.itemView.setBackgroundColor(Color.CYAN)
+        } else {
+            holder.itemView.setBackgroundColor(Color.WHITE)
+        }
     }
 
     /*
