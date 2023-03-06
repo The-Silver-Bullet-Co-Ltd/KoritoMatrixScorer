@@ -11,9 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import nz.co.silverbullet.koritomatrixscorer.adapter.MatrixRecyclerAdapter
+import nz.co.silverbullet.koritomatrixscorer.api.RetrofitInstance
 import nz.co.silverbullet.koritomatrixscorer.databinding.Activity1SelectBikeBinding
 import nz.co.silverbullet.koritomatrixscorer.repository.Repository
-import nz.co.silverbullet.koritomatrixscorer.utils.Constants.Companion.BASE_URL
 
 const val TAG = "SelectBikeActivity"
 
@@ -31,7 +31,7 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        instance = this
 //        try {
 //            Class.forName("dalvik.system.CloseGuard")
 //                .getMethod("setEnabled", Boolean::class.javaPrimitiveType)
@@ -63,6 +63,11 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
 
         /* options menu */
         mySettings()
+    }
+
+    companion object {
+        lateinit var instance : Activity1SelectBike
+            private set
     }
 
     private fun setupRecyclerView() = binding.recyclerView.apply {
@@ -112,7 +117,7 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
                 return true
             }
             R.id.action_help -> Toast.makeText(this,"HELP Selected",Toast.LENGTH_SHORT).show()
-            R.id.action_about -> Toast.makeText(this,"ABOUT Selected",Toast.LENGTH_SHORT).show()
+            R.id.action_about -> Toast.makeText(this,"Release: " + BuildConfig.VERSION_CODE + " Version: " + BuildConfig.VERSION_NAME, Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -120,8 +125,8 @@ class Activity1SelectBike : AppCompatActivity(), MatrixRecyclerAdapter.OnItemCli
     private fun mySettings() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
 //        val host = prefs.getString("hostname","192.168.1.2")
-        val host = BASE_URL
-        val refresh = prefs.getString("refresh","2")
+        val host = RetrofitInstance.getBaseUrl()
+        // val refresh = prefs.getString("refresh","2")
         val observer = prefs.getString("observer","")
 
         binding.apply {
