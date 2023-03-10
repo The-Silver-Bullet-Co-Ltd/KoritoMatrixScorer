@@ -68,8 +68,11 @@ class Activity2StartBike : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-//        val intent = Intent(this, Activity1SelectBike::class.java)
-//        intent.putExtras(bundle)
-//        startActivity(intent)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val observerName = prefs.getString("observer","")
+        viewModel.deleteReservation(bundle.getLong("id"), bundle.getString("number")!!, observerName!!)
+        val intent = Intent(this, Activity1SelectBike::class.java)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }
