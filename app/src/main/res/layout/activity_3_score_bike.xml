@@ -3,121 +3,122 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
+    <!-- Bike Number -->
     <TextView
         android:id="@+id/number3Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Number"
         android:textSize="@dimen/textSizeBikeNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/marginTopToNumber"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="@dimen/marginTopToNumber"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Rider Name -->
     <TextView
         android:id="@+id/name3Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
         android:textSize="@dimen/textSizeRiderName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/marginNumberToName"
         app:layout_constraintTop_toBottomOf="@id/number3Text"
-        android:layout_margin="@dimen/marginNumberToName"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Bike -->
     <TextView
         android:id="@+id/bike3Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bike"
         android:textSize="@dimen/textSizeBike"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/marginNameToBike"
         app:layout_constraintTop_toBottomOf="@id/name3Text"
-        android:layout_margin="@dimen/marginNameToBike"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Timer -->
     <Chronometer
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
         android:text="00:00:00"
         android:textSize="@dimen/textSizeTime"
-        app:layout_constraintBottom_toTopOf="@+id/dabButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/bike3Text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- DAB Count -->
     <TextView
         android:id="@+id/dabCountText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="0"
         android:textSize="@dimen/textSizeDab"
-        app:layout_constraintBaseline_toBaselineOf="@+id/dabButton"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toStartOf="@id/dabButton"
-        android:layout_marginEnd="20dp"/>
+        app:layout_constraintBaseline_toBaselineOf="@id/dabButton" />
 
+    <!-- DAB Button -->
     <Button
         android:id="@+id/dabButton"
         android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="300dp"
+        android:layout_height="wrap_content"
         android:onClick="scoreDab"
         android:text="DAB"
-        android:textSize="50sp"
+        android:textSize="@dimen/textSizeDab"
         android:background="@color/teal_200"
-        app:layout_constraintBottom_toTopOf="@+id/finishButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/timeText"
+        app:layout_constraintBottom_toTopOf="@id/failButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/failButton"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="60dp"
-        android:textAllCaps="false"
-        android:onClick="scoreFail"
-        android:text="FAIL"
-        android:textSize="50sp"
-        android:background="@color/teal_200"
-        app:layout_constraintTop_toBottomOf="@id/dabButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
+    <!-- DAB Time -->
     <TextView
         android:id="@+id/dabTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+10"
         android:textSize="@dimen/textSizeDab"
-        app:layout_constraintBaseline_toBaselineOf="@+id/dabButton"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/dabButton"
-        android:layout_marginStart="20dp"/>
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@id/dabButton"
+        app:layout_constraintBaseline_toBaselineOf="@id/dabButton" />
 
+    <!-- FAIL Button -->
+    <Button
+        android:id="@+id/failButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:onClick="scoreFail"
+        android:text="FAIL"
+        android:textAllCaps="false"
+        android:textSize="@dimen/textSizeDab"
+        android:background="@color/teal_200"
+        app:layout_constraintTop_toBottomOf="@id/dabButton"
+        app:layout_constraintBottom_toTopOf="@id/finishButton"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- FINISH Button -->
     <Button
         android:id="@+id/finishButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/buttonHeightFinalise"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:layout_height="@dimen/buttonHeightFinalise"
         android:layout_marginBottom="25dp"
-        android:background="@color/teal_700"
+        android:text="@string/finish"
+        android:textSize="@dimen/textSizeFinaliseTime"
         android:onClick="finishMatrix"
-        android:text="FINISH"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/warm_amber"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

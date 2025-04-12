@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    // ✅ Professional and trustworthy
+    <color name="blue_grey">#546E7A</color> // — calm and classy
+    <color name="deep_indigo">#3F51B5</color> // — still “official” but stands out
+    // ✅ Vibrant and Clear
+    <color name="emerald_green">#2E7D32</color> // — suggests success/confirmation
+    <color name="bright_blue">#0288D1</color> // — a clear action button, without being too loud
+    <color name="fresh_teal">#009688</color> // — similar tone, but less muddy than #018786
+    // ✅ Bold Call to Action
+    <color name="warm_amber">#FFA000</color> // — friendly but firm
+    <color name="deep_orange">#F4511E</color> // — strong “do this now” vibe
 </resources>

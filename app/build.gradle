@@ -11,8 +11,8 @@ android {
         applicationId "nz.co.silverbullet.koritomatrixscorer"
         minSdk 22
         targetSdk 33
-        versionCode 3
-        versionName "1.2 backMeOut"
+        versionCode 4
+        versionName '1.3.fitToScreen'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -34,12 +34,23 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach {
+            def appName = "KoritoMatrixScorer"
+            def versionName = variant.versionName
+            def versionCode = variant.versionCode
+            def buildType = variant.buildType.name
+            outputFileName = "${appName}-v${versionName}(${versionCode})-${buildType}.apk"
+        }
+    }
+
 }
 
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.15.0'
+    implementation 'androidx.core:core-ktx:1.16.0'
     implementation 'androidx.appcompat:appcompat:1.7.0'
 
     implementation 'com.google.android.material:material:1.12.0'

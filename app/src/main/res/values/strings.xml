@@ -26,4 +26,5 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_activity_settings">K.T.M. Settings</string>
+    <string name="finish">FINISH</string>
 </resources>

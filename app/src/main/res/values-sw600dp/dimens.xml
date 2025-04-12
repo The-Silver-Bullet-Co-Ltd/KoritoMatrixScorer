@@ -1,0 +1,17 @@
+<resources>
+    <dimen name="textSizeBikeNumber">90sp</dimen>
+    <dimen name="textSizeRiderName">60sp</dimen>
+    <dimen name="textSizeBike">35sp</dimen>
+
+    <dimen name="textSizeTime">135sp</dimen>
+    <dimen name="textSizeDab">50sp</dimen>
+    <dimen name="textSizeFinaliseTime">60sp</dimen>
+    <dimen name="textSizeResults">40sp</dimen>
+
+    <dimen name="buttonHeightFinalise">150dp</dimen>
+    <dimen name="buttonWidthStart">300dp</dimen>
+
+    <dimen name="marginTopToNumber">10dp</dimen>
+    <dimen name="marginNumberToName">10dp</dimen>
+    <dimen name="marginNameToBike">20dp</dimen>
+</resources>
