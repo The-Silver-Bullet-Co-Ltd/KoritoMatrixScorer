@@ -7,7 +7,8 @@ class Constants {
         // const val BASE_URL = "http://192.168.20.106"
         // const val BASE_URL = "http://10.238.253.239"
         // const val BASE_URL = "http://192.168.8.57" /* carbon */
-        const val BASE_URL = "http://192.168.8.58" /* webpoints */
+        // const val BASE_URL = "http://192.168.8.58" /* webpoints */
+        const val BASE_URL = "192.168.1.5" /* webpoints */
         // const val BASE_URL = "http://matrix.home.arpa"
     }
 }
